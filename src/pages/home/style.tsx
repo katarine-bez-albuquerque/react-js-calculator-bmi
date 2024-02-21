@@ -36,6 +36,7 @@ export const ResultSection = styled.section`
         font-weight: 700;
         line-height: 3.5rem;
         color: #FFF;
+        text-align: center;
     }
 
     .active {
