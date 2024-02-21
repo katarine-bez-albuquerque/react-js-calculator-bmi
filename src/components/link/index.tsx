@@ -1,8 +1,8 @@
 import { ILink } from "./ILink";
 
-const Link = ({ href, children }:ILink) => {
+const Link = ({ href, children, onclick }:ILink) => {
     return(
-        <a target="_blank" href={ href }>{ children }</a>
+        <a target="_blank" href={ href } onClick={onclick}>{ children }</a>
     );
 }
 

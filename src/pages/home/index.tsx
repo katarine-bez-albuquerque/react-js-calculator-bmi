@@ -1,18 +1,25 @@
+import { useState } from "react";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import Main from "../../components/main";
 import Nav from "../../components/nav";
 import Linkedin from '../../assets/imgs/linkedin.png';
 import Github from '../../assets/imgs/github.png';
-import { CalculateSection, Items, ResultSection, SectionImage } from "./style";
+import { 
+    Buttons, 
+    CalculateSection, 
+    Items, 
+    ResultSection, 
+    SectionImage 
+} from "./style";
 import Item from "../../components/item";
 import BMI from "../../components/bmi";
 import Form from "../../components/form";
 import Input from "../../components/input";
 import Label from "../../components/label";
-import { FormEvent, useState } from "react";
 import Image from "../../components/image";
 import Mouse from '../../assets/imgs/mouse.png';
+import Button from "../../components/button";
 
 const Home = () => {
     /**
@@ -23,16 +30,14 @@ const Home = () => {
     const [weight, setWeight] = useState('');
     const [total, setTotal] = useState('');
     const [result, setResult] = useState('');
-    const [mensage, setMesage] = useState('');
+    const [mensage, setMesage] = useState('');        
     /**
      * Realiza o cálculo do IMC (peso / ( altura x altura ) )
      * Testa os valores e exibe uma mensagem ao usuário.
      * Calculates BMI (weight / (height x height) )
-     * Tests the values and displays a message to the user.
-     * @param event
+     * Tests the values and displays a message to the user.  
      */    
-    const calculateBMI = (event:FormEvent): void => {
-        event.preventDefault();
+    const calculateBMI = (): void => {
         if(weight === '' || height === '') {
             setMesage("Fill in the fields to continue!");
             return;
@@ -40,6 +45,27 @@ const Home = () => {
         let total = Number(weight) / ( Number(height) * Number(height) )
         getBMI( total );
         setTotal( total.toFixed(2) );
+        /**
+         * Redireciona para a seção de resultado do IMC.
+         * Redirects to the BMI result section. 
+        */ 
+        window.location.assign("/#result");     
+    }
+    /**
+     * Limpar campos e redirecionar página
+     * Clear fields and redirect page
+     */
+    const clearFields = () => {
+        setWeight('');
+        setHeight('');
+        setTotal('');
+        setResult('');
+        setMesage('');
+        /**
+         * Redireciona para a rota principal.
+         * Redirects to the main route.  
+        */ 
+        window.location.replace('/');      
     }
     /**
      * Recupera o total e faz o teste, logo é exibido ao usuário o seu IMC.
@@ -117,23 +143,29 @@ const Home = () => {
                             </article>                            
                         </section>
                         <h6>{ (weight !== '' || height !== '') ? "" : mensage }</h6>
-                        <Input
-                            type="submit"
-                            value="Calcular"
-                        />                        
+                        <Buttons>                            
+                            <Button
+                                name="Calculate"
+                                onclick={() => calculateBMI()}
+                            />
+                            <Button
+                                name="Clear"
+                                onclick={() => clearFields()}
+                            />                            
+                        </Buttons>                                               
                     </Form>
                     <BMI
                         description="Your BMI is:"
                         value={total ? total : "0.00"}
-                    />
-                </CalculateSection>
-                <SectionImage>
-                    <Image
-                        src={Mouse}
-                        alt="Scroll the page"
-                    />
-                </SectionImage>
-                <ResultSection>
+                    />                    
+                    <SectionImage>                        
+                        <Image
+                            src={Mouse}
+                            alt="Scroll the page"
+                        />                        
+                    </SectionImage>
+                </CalculateSection>                
+                <ResultSection id="result">
                     <h2>Understand Your Result</h2>
                     <Items>
                         <Item

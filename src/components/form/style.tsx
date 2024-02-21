@@ -22,7 +22,8 @@ export const FormSection = styled.form`
         color: #FFF;
     }
 
-    input[type="submit"] {
+    input[type="submit"],
+    button[type="button"] {
         width: auto;
         height: auto;
         padding: 0.5rem 1rem;
@@ -31,10 +32,17 @@ export const FormSection = styled.form`
         border: 1px solid #ffd42a;
         color: #ffd42a;
         font-size: 1.2rem;
+        text-decoration: none;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #333;
         cursor: pointer;
+    }    
+
+    button[type="button"]:focus {
+        border: 1px solid #ffd42a;
+        outline: 0 none;
     }
 
     section {

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const CalculateSection = styled.section`
-    width: 90%;
-    height: 60vh;
+    width: 100%;
+    height: 72vh;
     padding: 3rem 1rem;
     box-sizing: border-box;
     display: flex;
@@ -20,7 +20,7 @@ export const CalculateSection = styled.section`
 `
 
 export const ResultSection = styled.section`
-    width: 90%;
+    width: 100%;
     height: auto;
     padding: 3rem 1rem;
     margin: 2rem 0;
@@ -78,7 +78,7 @@ export const Items = styled.section`
 export const SectionImage = styled.section`
     width: 100%;
     height: auto;
-    padding: 0 3rem;
+    padding: 1rem 3rem;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -87,5 +87,22 @@ export const SectionImage = styled.section`
     img {
         width: 4rem;
         height: auto;
+        position: relative;
+        bottom: 3rem;
     }
+
+    @media(max-width: 768px) {
+        img {
+            width: 4rem;
+            height: auto;
+            top: 0.25rem;
+        }
+    }
+`
+
+export const Buttons = styled.section`
+    width: auto;
+    height: auto;
+    display: flex;
+    gap: 1rem;
 `
