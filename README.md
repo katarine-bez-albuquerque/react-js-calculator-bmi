@@ -7,7 +7,7 @@
 
 ## Sobre o projeto
 
-Clique e acesse o projeto: [calulator-bmi-react](https://)
+Clique e acesse o projeto: [calulator-bmi-react](https://react-js-calculator-bmi.vercel.app/)
 
 Trabalho realizado com o framework React Js, com uso de Typescript, HTML5, CSS3 e Flexbox. 
 
